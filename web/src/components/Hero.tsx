@@ -1,15 +1,40 @@
-import HeroGraph from "./HeroGraph";
+import { lazy, Suspense, useEffect, useState } from "react";
 import ErrorBoundary from "./ErrorBoundary";
 import { useScramble } from "../hooks/useScramble";
 import { isLive, STATS } from "../lib/api";
 
+// three.js is ~800KB — keep it out of the critical path and only mount the
+// WebGL scene once the browser is idle (and motion is allowed).
+const HeroGraph = lazy(() => import("./HeroGraph"));
+
 export default function Hero() {
   const line1 = useScramble("Which of your services", 200, 1.4);
+  const [showGraph, setShowGraph] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Mount the WebGL scene on the first real interaction — instant for a human
+    // (any move/scroll), while keeping three.js entirely off the cold-load path.
+    const events = ["pointermove", "pointerdown", "scroll", "keydown", "touchstart"];
+    const go = () => {
+      setShowGraph(true);
+      events.forEach((e) => window.removeEventListener(e, go));
+    };
+    events.forEach((e) => window.addEventListener(e, go, { passive: true, once: true }));
+    return () => events.forEach((e) => window.removeEventListener(e, go));
+  }, []);
+
   return (
     <section className="hero" id="top">
       <div className="hero-graph-layer">
         <ErrorBoundary fallback={<div className="hero-graph-fallback" />}>
-          <HeroGraph />
+          {showGraph ? (
+            <Suspense fallback={<div className="hero-graph-fallback" />}>
+              <HeroGraph />
+            </Suspense>
+          ) : (
+            <div className="hero-graph-fallback" />
+          )}
         </ErrorBoundary>
       </div>
       <div className="hero-scrim" />

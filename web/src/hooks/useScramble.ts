@@ -4,7 +4,7 @@ const CHARS = "!<>-_\\/[]{}—=+*^?#01__";
 
 /** Decodes text with a glitch scramble on mount. */
 export function useScramble(text: string, delay = 0, speed = 1) {
-  const [out, setOut] = useState("");
+  const [out, setOut] = useState(text);
   const raf = useRef(0);
   useEffect(() => {
     let frame = 0;
