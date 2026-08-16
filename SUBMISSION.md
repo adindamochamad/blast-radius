@@ -99,7 +99,7 @@ past the mark may not be reviewed.
 > Radius.
 
 **Deployed project link**
-> https://web-flax-xi-10.vercel.app
+> https://blast-radius-rho.vercel.app
 
 **How the project uses the HydraDB Open Source Repo**
 > HydraDB is the core datastore and query engine. The npm subgraph is ingested over the

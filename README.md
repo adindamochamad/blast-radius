@@ -5,6 +5,8 @@
 Supply-chain reverse-dependency closure on [HydraDB](https://github.com/hydra-db/hydradb).
 Built for **Hack Hydra · Track 02A — Supply Chain Blast Radius**.
 
+**Live demo:** https://blast-radius-rho.vercel.app
+
 When an npm package is compromised, the defender's problem is *speed of blast-radius
 resolution*: which of your services are exposed, which lockfiles resolved the bad
 version while it was live, who shares a maintainer with it, and which typosquats sit

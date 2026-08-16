@@ -20,3 +20,9 @@ data/packages.json
 .env
 .env.*
 .DS_Store
+
+# vercel link + oidc token
+.vercel/
+web/.vercel/
+.env.local
+web/.env.local
