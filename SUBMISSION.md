@@ -13,7 +13,7 @@ static snapshot):
 ```bash
 # 1. HydraDB (if not running)
 open -a OrbStack
-docker start hydradb        # already ingested with 2,526 packages
+docker start hydradb        # already ingested with ~6,000 packages
 
 # 2. API
 cd engine && .venv/bin/uvicorn api:app --port 8000
@@ -39,20 +39,20 @@ past the mark may not be reviewed.
 
 **[0:30–1:00] What it is**
 > "This is Blast Radius. I built the npm dependency ecosystem as a graph in HydraDB —
-> 2,500 packages, 14,000 versions, real maintainers and timestamps — and I ask it the
+> 6,000 packages, 33,000 versions, real maintainers and timestamps — and I ask it the
 > questions a vector database structurally cannot answer."
 
 *(Scroll to the 5-minute problem section, then to the live demo.)*
 
 **[1:00–2:10] The demo — the money shot**
 > "Same alert, two tools. On the left, npm audit: it checks an advisory database, finds
-> zero known vulnerabilities, and sees only 84 direct dependents. It's blind to a
+> zero known vulnerabilities, and sees only 145 direct dependents. It's blind to a
 > zero-day compromise."
 >
 > *(Click DETONATE / type `debug`.)*
 >
 > "On the right, Blast Radius runs a transitive reverse-dependency closure in HydraDB —
-> and in about 150 milliseconds it lights up **160 exposed packages, four hops deep**.
+> and in about 300 milliseconds it lights up **425 exposed packages, four hops deep** — three times what the scanner saw.
 > Then it goes further: which internal services resolved a bad version and when" *(click
 > Services)* "which maintainers control other packages — one leaked credential, more
 > victims" *(click Maintainers)* "and typosquats sitting one edit away." *(click
@@ -91,7 +91,7 @@ past the mark may not be reviewed.
 > traversal over tens of millions of versioned nodes, not a similarity search.
 
 **What you built**
-> A graph of 2,526 real npm packages / 14,326 versions / maintainers / timestamps in
+> A graph of 6,023 real npm packages / 33,505 versions / maintainers / timestamps in
 > HydraDB, plus an engine that answers four questions: (1) transitive reverse-dependency
 > blast radius, (2) which internal services resolved an exposed version within the live
 > window (temporal), (3) shared-maintainer pivots, (4) typosquat lookalikes. A FastAPI

@@ -5,7 +5,7 @@ import { STATS } from "../lib/api";
 export default function Loader({ onDone }: { onDone: () => void }) {
   const [count, setCount] = useState(0);
   const [gone, setGone] = useState(false);
-  const target = 14326; // versions indexed in the demo graph
+  const target = 33505; // versions indexed in the demo graph
 
   useEffect(() => {
     const dur = 1400;

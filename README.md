@@ -99,7 +99,7 @@ docker run -d --name hydradb --user "$(id -u):$(id -g)" \
 cd engine
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
-.venv/bin/python ingest.py --reset --max-packages 2500 --workers 16   # builds the graph
+.venv/bin/python ingest.py --reset --max-packages 6000 --workers 16   # builds the graph
 .venv/bin/python queries.py debug                                     # sanity check
 .venv/bin/uvicorn api:app --port 8000                                 # HTTP API
 ```

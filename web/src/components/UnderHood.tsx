@@ -23,18 +23,23 @@ export default function UnderHood() {
               procedure against one pinned snapshot. Remove HydraDB and there is
               no product — only a JSON file and a prayer.
             </p>
+            <p className="hood-lede dim" style={{ marginTop: 16 }}>
+              This demo indexes a ~6,000-package subgraph. The same engine and the
+              same queries run unchanged on HydraDB's object-store architecture at
+              tens of millions of versioned nodes — the scale of the real npm graph.
+            </p>
             <div className="hood-metrics">
               <div>
                 <div className="display hood-num">{STATS.packages.toLocaleString()}</div>
                 <div className="mono">packages</div>
               </div>
               <div>
-                <div className="display hood-num">14,326</div>
+                <div className="display hood-num">33,505</div>
                 <div className="mono">versions</div>
               </div>
               <div>
-                <div className="display hood-num">&lt;150<span className="hood-unit">ms</span></div>
-                <div className="mono">4-hop closure</div>
+                <div className="display hood-num">~300<span className="hood-unit">ms</span></div>
+                <div className="mono">reverse closure</div>
               </div>
             </div>
           </div>
