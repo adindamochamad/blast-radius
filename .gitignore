@@ -26,3 +26,6 @@ data/packages.json
 web/.vercel/
 .env.local
 web/.env.local
+
+# internal working memory (not for public repo)
+.session-memory.md
